@@ -18,7 +18,7 @@ jobs:
 
   Check-Unused-Dependencies:
     runs-on: ubuntu-latest
-    need: [Project-Analysis]
+    needs: [Project-Analysis]
     steps:
       - name: Starting Check Unused Dependencies
         run: |
@@ -28,7 +28,7 @@ jobs:
 
   Check-Unused-SASS-Variable:
     runs-on: ubuntu-latest
-    need: [Check-Unused-Dependencies]
+    needs: [Check-Unused-Dependencies]
     steps:
       - name: Starting Check Unused sass Variable
         run: echo "Hello World"
