@@ -1,12 +1,13 @@
 name: Nodejs Demo Deploy
 
-on
-  pull_request:
-    branch: [dev]
+on:
+  push:
+    branch: [ dev ]
+  workflow_dispatch:
 
-jobs
+jobs:
   Project Analysis:
-    run-on: ubuntu-lastest
+    runs-on: ubuntu-lastest
     
     step:
       - uses: actions/checkout@v2
