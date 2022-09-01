@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Testnet Manager - Substrate Devops Guide</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../deployments/index.html"><strong aria-hidden="true">2.</strong> Deployment Options</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/types.html"><strong aria-hidden="true">2.1.</strong> Role Types</a></li><li class="chapter-item expanded "><a href="../deployments/targets.html"><strong aria-hidden="true">2.2.</strong> Remote Targets</a></li><li class="chapter-item expanded "><a href="../deployments/options.html"><strong aria-hidden="true">2.3.</strong> Role Specific Arguments</a></li></ol></li><li class="chapter-item expanded "><a href="../serverdeploy/index.html"><strong aria-hidden="true">3.</strong> Server Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverdeploy/systemd.html"><strong aria-hidden="true">3.1.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../serverdeploy/logging.html"><strong aria-hidden="true">3.2.</strong> Logging</a></li><li class="chapter-item expanded "><a href="../serverdeploy/automation.html"><strong aria-hidden="true">3.3.</strong> Automation</a></li></ol></li><li class="chapter-item expanded "><a href="../kubernetes/index.html"><strong aria-hidden="true">4.</strong> Kubernetes Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kubernetes/helm.html"><strong aria-hidden="true">4.1.</strong> Helm Chart</a></li><li class="chapter-item expanded "><a href="../kubernetes/testnetmanager.html" class="active"><strong aria-hidden="true">4.2.</strong> Testnet Manager</a></li></ol></li><li class="chapter-item expanded "><a href="../monitoring/index.html"><strong aria-hidden="true">5.</strong> Monitoring</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monitoring/example.html"><strong aria-hidden="true">5.1.</strong> Example Monitoring Stack</a></li></ol></li><li class="chapter-item expanded "><a href="../keys_accounts.html"><strong aria-hidden="true">6.</strong> Keys And Accounts</a></li><li class="chapter-item expanded "><a href="../customchain.html"><strong aria-hidden="true">7.</strong> Custom Relay/Solo Chain</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">8.</strong> 🥼 Infrastructure Tooling</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Substrate Devops Guide</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="testnet-manager"><a class="header" href="#testnet-manager">Testnet Manager</a></h1>
+<p>The <a href="https://github.com/paritytech/testnet-manager">Testnet manager</a> (<a href="https://github.com/paritytech/helm-charts/tree/main/charts/testnet-manager">helm chart</a>) lets you dynamically control test networks via a simple UI or API. It gives you a single pane of glass to list, inspect and interact with the nodes (full nodes, validators and parachain collators) running in a given Kubernetes namespace.</p>
+<h2 id="rococo-example-view"><a class="header" href="#rococo-example-view">Rococo Example View</a></h2>
+<h3 id="list-parachains"><a class="header" href="#list-parachains">List Parachains</a></h3>
+<p><img src="../images/rococo-parachains.png" alt="rococo-parachains" /></p>
+<h3 id="list-parachain-collators"><a class="header" href="#list-parachain-collators">List Parachain Collators</a></h3>
+<p><img src="../images/rococo-collators-1002.png" alt="rococo-collators-1002" /></p>
+<h3 id="inspect-validator-node"><a class="header" href="#inspect-validator-node">Inspect Validator Node</a></h3>
+<p><img src="../images/rococo-validator-a-node-0.png" alt="rococo-validator-a-node-0" /></p>
+<h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
+<h3 id="requirements"><a class="header" href="#requirements">Requirements</a></h3>
+<p>The testnet manager requires the chain Sudo seed phrase to perform management functions. Also some chain specific variables should be defined in a configmap, this can be added to the <code>values.yaml</code>:</p>
+<pre><code class="language-yaml">configmap:
+  WS_ENDPOINT: &quot;ws://rococo-alice-node-0.rococo:9944&quot;
+  NODE_HTTP_PATTERN: &quot;http://NODE_NAME.rococo:9933&quot;
+  NODE_WS_PATTERN: &quot;ws://NODE_NAME.rococo:9944&quot;
+  HEALTHY_MIN_PEER_COUNT: &quot;1&quot;
+  LOG_LEVEL: DEBUG
+
+secret:
+  SUDO_SEED: &quot;0xe5be9a5092b81bca64be81d212e7f2f9eba183bb7a90954f7b76361f6edb5c0a&quot; # Alice
+  VALIDATORS_ROOT_SEED: &quot;test test test test test test test test test test test test&quot;
+</code></pre>
+<p>Then install the testnet manager and port forward a connection using the output of the install:</p>
+<pre><code>helm repo add parity https://paritytech.github.io/helm-charts/
+helm repo update
+helm install testnet-mgr parity/testnet-manager --values values.yaml
+</code></pre>
+<h3 id="frontend-gui"><a class="header" href="#frontend-gui">Frontend GUI</a></h3>
+<p>In the nodes section you can view all running nodes, their roles, chain, uptime, cli arguments and you can also view logs.</p>
+<p><img src="../images/testnet-mgr.png" alt="testnet-mgr-frontend" /></p>
+<h3 id="interact-with-api-via-frontend"><a class="header" href="#interact-with-api-via-frontend">Interact with API via Frontend</a></h3>
+<p>It's possible to view the API calls and execute them via the GUI. The main functions are:</p>
+<ul>
+<li>Viewing nodes, validators, collators and parachains</li>
+<li>Registering / de-registering validators and collators</li>
+<li>Onboarding / off-boarding parachains</li>
+<li>Rotating session keys</li>
+</ul>
+<p><img src="../images/testnet-mgr-api.png" alt="testnet-mgr-api" /></p>
+<h3 id="examples"><a class="header" href="#examples">Examples</a></h3>
+<p>Register a new validator in the <code>StatefulSet</code> called <code>rococo-val-pool</code>:</p>
+<pre><code>curl -X 'POST' \
+  'http://localhost:8080/api/register_validators?statefulset=rococo-val-pool' \
+  -H 'accept: application/json' \
+  -d ''
+</code></pre>
+<p>Onboard Parachain id 1000:</p>
+<pre><code>curl -X 'POST' \
+'http://localhost:8080/api/onboard_parachain/1000' \
+-H 'accept: application/json' \
+-d ''
+</code></pre>
+<h3 id="how-does-it-work-"><a class="header" href="#how-does-it-work-">How does it work ?</a></h3>
+<p>The testnet-manager is deployed in the same Kubernetes namespaces as nodes deployed with the <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node">node helm-chart</a>. As node pods deployed with the chart are tagged with the appropriate labels (eg. chain name, para ID), the manager is able to query the Kubernetes API and list the running nodes for each network (relay-chain, parachains).</p>
+<p>By combining this list of nodes with the on-chain state retrieved from RPC endpoints (eg. list of active validators accounts), the manager can automate node key setup (by interacting directly with each node RPC endpoint) and registration (by submitting sudo extrinsics). Behind the scenes, it uses a derivation formula for generating deterministic Validator/Collator accounts addresses: &quot;${VALIDATORS_ROOT_SEED}//${node-name}&quot;.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../kubernetes/helm.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../monitoring/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../kubernetes/helm.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../monitoring/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
