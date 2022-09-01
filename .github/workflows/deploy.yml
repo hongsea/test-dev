@@ -14,8 +14,8 @@ jobs:
         with: 
           node-version: "18.x"
       - name: Install dependencies
-        run: npm install decheck
-      - name: Start Analysis
+        run: npm install depcheck
+      - name: Check Unused Dependencies
         run: npx decheck
 
         
