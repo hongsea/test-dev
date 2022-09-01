@@ -1,4 +1,21 @@
 name: Nodejs Demo Deploy
 
 on
-  pull
+  pull_request:
+    branch: [dev]
+
+jobs
+  Project Analysis:
+    run-on: ubuntu-lastest
+    
+    step:
+      - uses: actions/checkout@v2
+      - name: Setup Nodejs
+      - uses: actions/setup-node@v2
+
+      with:
+        node-version: "18.x"
+
+      - name: Install Dependencies
+        run: npm install depcheck
+
