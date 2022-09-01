@@ -15,7 +15,11 @@ jobs:
           node-version: "18.x"
       - name: Install dependencies
         run: npm install depcheck
-      - name: Check Unused Dependencies
+  Check-Unused-Dependencies:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Starting Check Unused Dependencies
         run: |
           git clone https://github.com/hongsea/src.git
           bash src/remove-dependencies.sh
