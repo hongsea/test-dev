@@ -9,7 +9,7 @@ jobs:
   Project Analysis:
     runs-on: ubuntu-lastest
     
-  step:
+  steps:
     - uses: actions/checkout@v2
     - name: Setup Nodejs
     - uses: actions/setup-node@v2
