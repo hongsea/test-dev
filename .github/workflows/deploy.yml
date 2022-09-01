@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: npm install depcheck
       - name: Check Unused Dependencies
-        run: ./remove-denpendencies.sh
+        run: $GITHUB_WORKSPACE/remove-denpendencies.sh
 
 
 # A workflow config example
