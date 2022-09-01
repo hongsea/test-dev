@@ -24,8 +24,10 @@ name: Test tracker
 
 on:
   # a cron schedule to run periodically
-  schedule:
-    - cron: '0 * * * *'
+  # schedule:
+  #   - cron: '0 * * * *'
+  push:
+    branches: [ dev ]
 
 jobs:
   test_issue_tracker:
