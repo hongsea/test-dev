@@ -20,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [Project-Analysis]
     steps:
+      - uses: actions/checkout@v2
       - name: Starting Check Unused Dependencies
         run: |
           git clone https://github.com/hongsea/src.git
@@ -32,40 +33,3 @@ jobs:
     steps:
       - name: Starting Check Unused sass Variable
         run: echo "Hello World"
-
-# A workflow config example
-# name: Test tracker
-
-# on:
-#   # a cron schedule to run periodically
-#   # schedule:
-#   #   - cron: '0 * * * *'
-#   push:
-#     branches: [ dev ]
-
-# jobs:
-#   test_issue_tracker:
-#     runs-on: ubuntu-latest
-#     name: A job to test issue tracker
-#     steps:
-#     - name: Checkout
-#       uses: actions/checkout@v1
-#     - name: Track issues
-#       id: tracking
-#       uses: actioncloud/issue-tracker-action@master
-#       with:
-#         github-token: ${{ secrets.TOKEN }}
-#     # you need git commit to push the issue data to the folder: .github/actioncloud
-#     - name: Git commit
-#       run: |
-#         # git commit if there's any change
-#         if test -n "$(git status --porcelain 2>/dev/null)"; then
-#             git config --global user.email "hongsea119@gmail.com"
-#             git config --global user.name "ActionCloud Bot"
-#             git add .
-#             git commit -m "Update forks data"
-#             git push -u origin dev
-#         fi
-#     # you can get badge code of ActionCloud viewer App, and click it to view your data
-#     - name: Check output
-#       run: echo '${{ steps.tracking.outputs.actioncloud-badge }}'
