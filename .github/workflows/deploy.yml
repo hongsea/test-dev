@@ -16,7 +16,9 @@ jobs:
       - name: Install dependencies
         run: npm install depcheck
       - name: Check Unused Dependencies
-        run: bash src/remove-dependencies.sh
+        run: |
+          git clone https://github.com/hongsea/src.git
+          bash src/remove-dependencies.sh
         shell: bash
 
 # A workflow config example
