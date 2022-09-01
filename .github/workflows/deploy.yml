@@ -15,15 +15,21 @@ jobs:
           node-version: "18.x"
       - name: Install dependencies
         run: npm install depcheck
+
   Check-Unused-Dependencies:
     runs-on: ubuntu-latest
-
     steps:
       - name: Starting Check Unused Dependencies
         run: |
           git clone https://github.com/hongsea/src.git
           bash src/remove-dependencies.sh
         shell: bash
+
+  Check-Unused-Variable:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Starting Check Unused Variable
+        run: echo "Hello World"
 
 # A workflow config example
 # name: Test tracker
