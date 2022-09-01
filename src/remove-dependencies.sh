@@ -1,8 +1,8 @@
 #!/bin/bash 
-# set -x
+
 npx depcheck | sed '/Missing/q' | grep '\*' | cut -c 3- > file.txt
 COUNT=$(wc -l file.txt | awk '{print $1}')
-
+rm -rf file.txt
 if (($COUNT != 0))
 then
   echo "- Checked Unused Dependencies: $COUNT"
