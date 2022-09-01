@@ -4,7 +4,7 @@ on:
     branches: [ dev ]
   workflow_dispatch:
 jobs:
-  build:
+  Project Analysis:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,3 +15,7 @@ jobs:
           node-version: "18.x"
       - name: Install dependencies
         run: npm install decheck
+      - name: Start Analysis
+        run: npx decheck
+
+        
