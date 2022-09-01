@@ -16,6 +16,6 @@ jobs:
       - name: Install dependencies
         run: npm install depcheck
       - name: Check Unused Dependencies
-        run: npx decheck
+        run: npx depcheck
 
         
