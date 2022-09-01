@@ -1,57 +1,57 @@
-# name: Main
-# on:
-#   push:
-#     branches: [ dev ]
-#   workflow_dispatch:
-# jobs:
-#   Project-Analysis:
-#     runs-on: ubuntu-latest
+name: Main
+on:
+  push:
+    branches: [ dev ]
+  workflow_dispatch:
+jobs:
+  Project-Analysis:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - uses: actions/checkout@v2
-#       - name: Use Node.js
-#         uses: actions/setup-node@v2
-#         with: 
-#           node-version: "18.x"
-#       - name: Install dependencies
-#         run: npm install depcheck
-#       - name: Check Unused Dependencies
-#         run: npx depcheck
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with: 
+          node-version: "18.x"
+      - name: Install dependencies
+        run: npm install depcheck
+      - name: Check Unused Dependencies
+        run: ./remove-denpendencies.sh
 
 
 # A workflow config example
-name: Test tracker
+# name: Test tracker
 
-on:
-  # a cron schedule to run periodically
-  # schedule:
-  #   - cron: '0 * * * *'
-  push:
-    branches: [ dev ]
+# on:
+#   # a cron schedule to run periodically
+#   # schedule:
+#   #   - cron: '0 * * * *'
+#   push:
+#     branches: [ dev ]
 
-jobs:
-  test_issue_tracker:
-    runs-on: ubuntu-latest
-    name: A job to test issue tracker
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-    - name: Track issues
-      id: tracking
-      uses: actioncloud/issue-tracker-action@master
-      with:
-        github-token: ${{ secrets.TOKEN }}
-    # you need git commit to push the issue data to the folder: .github/actioncloud
-    - name: Git commit
-      run: |
-        # git commit if there's any change
-        if test -n "$(git status --porcelain 2>/dev/null)"; then
-            git config --global user.email "hongsea119@gmail.com"
-            git config --global user.name "ActionCloud Bot"
-            git add .
-            git commit -m "Update forks data"
-            git push -u origin dev
-        fi
-    # you can get badge code of ActionCloud viewer App, and click it to view your data
-    - name: Check output
-      run: echo '${{ steps.tracking.outputs.actioncloud-badge }}'
+# jobs:
+#   test_issue_tracker:
+#     runs-on: ubuntu-latest
+#     name: A job to test issue tracker
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v1
+#     - name: Track issues
+#       id: tracking
+#       uses: actioncloud/issue-tracker-action@master
+#       with:
+#         github-token: ${{ secrets.TOKEN }}
+#     # you need git commit to push the issue data to the folder: .github/actioncloud
+#     - name: Git commit
+#       run: |
+#         # git commit if there's any change
+#         if test -n "$(git status --porcelain 2>/dev/null)"; then
+#             git config --global user.email "hongsea119@gmail.com"
+#             git config --global user.name "ActionCloud Bot"
+#             git add .
+#             git commit -m "Update forks data"
+#             git push -u origin dev
+#         fi
+#     # you can get badge code of ActionCloud viewer App, and click it to view your data
+#     - name: Check output
+#       run: echo '${{ steps.tracking.outputs.actioncloud-badge }}'
