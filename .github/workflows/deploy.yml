@@ -4,7 +4,7 @@ on:
     branches: [ dev ]
   workflow_dispatch:
 jobs:
-  Project Analysis:
+  Project-Analysis:
     runs-on: ubuntu-latest
 
     steps:
