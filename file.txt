@@ -1,10 +1,9 @@
-Unused dependencies
-* body-parser
-* cookie-parser
-* debug
-* decheck
-* depcheck
-* ejs
-* jade
-* prune
-* serve-favicon
+body-parser
+cookie-parser
+debug
+decheck
+depcheck
+ejs
+jade
+prune
+serve-favicon

@@ -1,10 +1,18 @@
 #!/bin/bash 
 # set -x
 npx depcheck | sed '/Missing/q' | grep '\*' | cut -c 3- > file.txt
-count=$(wc -l file.txt | awk '{print $1}')
+COUNT=$(wc -l file.txt | awk '{print $1}')
 
-echo "Checked Unued Dependencies: $count unued"
+if (($COUNT != 0))
+then
+  echo "- Checked Unused Dependencies: $COUNT"
+  echo "- Uninstalling Unused Dependencies..."
 
-npx depcheck | sed '/Missing/q' | grep '\*' | cut -c 3- | while read my_package; do
-  echo "$my_package"
-done;
+  npx depcheck | sed '/Missing/q' | grep '\*' | cut -c 3- | while read my_package; do
+    npm uninstall "$my_package" >  /dev/null
+  done; 
+
+  echo "- Passed Check Unused Dependencies."
+else
+  echo "- Passed Check Unused Dependencies."
+fi
