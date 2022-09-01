@@ -2,13 +2,13 @@ name: Nodejs Demo Deploy
 
 on:
   push:
-    branch: [ dev ]
+    branches: [ dev ]
   workflow_dispatch:
 
 jobs:
-  Project Analysis:
+  ProjectAnalysis:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v2
       - name: Setup Nodejs
